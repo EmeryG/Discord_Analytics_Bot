@@ -1,0 +1,7 @@
+Socionics Role Bot Scope:
+
+- Define user roles to be recorded in database
+- Record users that have certain roles at regular time periods throughout the day
+- Record users that left, timestamp, and their particular roles
+
+We can use database to create dashboards for server Socionics statistics
