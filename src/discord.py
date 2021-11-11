@@ -32,7 +32,7 @@ class Guild:
     def get_roles(self):
         return self.get_req(f'/guilds/{self.guild_id}/roles')
     
-    def post_message(self, message):
+    def send_message(self, message):
         data = {
             'content': message,
             'tts': False
