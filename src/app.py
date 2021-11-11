@@ -1,8 +1,3 @@
-import json, schema, mysql.connector
+import json, schema
 
-connection = mysql.connector.connect(
-                            user='admin',
-                            password='password',
-                            host='host.docker.internal'
-                                    )
-print(schema.get_role_names())
+schema.send_role_count()
