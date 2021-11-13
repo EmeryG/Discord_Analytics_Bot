@@ -1,4 +1,4 @@
-import requests
+import requests, base64
 from requests.api import head
 
 DISCORD_API = 'https://discord.com/api/v8'
@@ -27,7 +27,7 @@ class Guild:
         return r.json()
     
     def get_users(self):
-        return self.get_req(f'/guilds/{self.guild_id}/roles', { 'limit': 1000 })
+        return self.get_req(f'/guilds/{self.guild_id}/members', { 'limit': 1000 })
 
     def get_roles(self):
         return self.get_req(f'/guilds/{self.guild_id}/roles')
@@ -39,6 +39,20 @@ class Guild:
         }
 
         return self.post_req('/channels/908169250684960778/messages', data)
-
+    
+    def send_image(self, image):
+        imageFile = open(image + ".png", "rb")
+        
+        multipart = {
+            "file": (imageFile.name, imageFile.read(), "image/png")
+        }
+        
+        data = {
+            "content": ""
+        }
+        
+        r2 = requests.post(DISCORD_API + '/channels/908169250684960778/messages', headers=headers, files=multipart, data=data)
+        r2.raise_for_status()
+        
 with open('server_id.txt', 'r') as file:
     DEFAULT_GUILD = Guild(file.read().rstrip())

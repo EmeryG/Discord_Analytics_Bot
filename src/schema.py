@@ -1,4 +1,5 @@
 from discord import DEFAULT_GUILD
+import plot
 
 specified_roles = {
     '848352240481337364': 0,
@@ -54,12 +55,14 @@ def send_role_count():
             if role in user['roles']:
                 specified_roles[role] += 1
     
-    message = []
+    counted_roles = {}
     
     for role in specified_roles.keys():
-        message.append(f'{role_list[role]}: {specified_roles[role]}')
-        
-    DEFAULT_GUILD.post_message('\n'.join(message))
+        counted_roles[role_list[role]] = specified_roles[role]
+    
+    plot.normalize_plot(counted_roles, 'type_stats')
+    
+    DEFAULT_GUILD.send_image('type_stats')
     
     
     
