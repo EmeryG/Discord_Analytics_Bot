@@ -1,3 +1,3 @@
-import json, schema
+import json, data_manager
 
-schema.send_group_counts()
+data_manager.send_group_counts()

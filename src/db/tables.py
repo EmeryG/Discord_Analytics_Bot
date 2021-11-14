@@ -36,7 +36,7 @@ def check_table(conn, table):
     if check_table_exist(conn, table["name"]) == False:
         colDef = ""
         
-        for i in range(0,table["cols"].length):
+        for i in range(0,len(table["cols"])):
             colDef += table["cols"][i]["def"] + ",\n"
         
         colDef += f"PRIMARY KEY ({table['cols'][0]['name']})"
@@ -63,9 +63,9 @@ def check_column_exist(conn, tablename, columnname):
     cursor = conn.cursor()
     cursor.execute(f"""
             SELECT COUNT(*)
-            FROM information_schema.columns
-            WHERE table_name = {tablename}
-            AND column_name = {columnname}
+            FROM INFORMATION_SCHEMA.COLUMNS
+            WHERE table_name = '{tablename}'
+            AND column_name = '{columnname}'
                     """)  
     
     result = cursor.fetchone()[0]
@@ -83,8 +83,8 @@ def check_table_exist(conn, tablename):
     cursor = conn.cursor()
     cursor.execute(f"""
             SELECT COUNT(*)
-            FROM information_schema.tables
-            WHERE table_name = {tablename}
+            FROM INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_NAME = '{tablename}'
                     """)    
     
     result = cursor.fetchone()[0]

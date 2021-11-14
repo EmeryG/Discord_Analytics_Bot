@@ -1,5 +1,4 @@
-import requests, base64
-from requests.api import head
+import requests
 
 DISCORD_API = 'https://discord.com/api/v8'
 BOT_ID = '907693823407312896'
