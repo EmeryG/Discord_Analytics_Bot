@@ -1,3 +1,3 @@
 import json, schema
 
-schema.send_role_count()
+schema.send_group_counts()

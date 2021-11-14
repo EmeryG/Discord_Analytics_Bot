@@ -1,5 +1,5 @@
 from discord import DEFAULT_GUILD
-import plot
+import db, plot
 
 specified_roles = {
     '848352240481337364': 0,
@@ -29,10 +29,11 @@ def get_user_info():
         user_info = user['user']
         
         user_map.append({
-            'user_id': user_info['id'], 
-            'username': user_info['username'], 
-            'nick': user['nick'],
-            'roles': user['roles']})
+                    'user_id': user_info['id'], 
+                    'roles': user['roles'],
+                    'username': user_info['username'], 
+                    'nick': user['nick']
+                        })
     
     return user_map
 
@@ -46,7 +47,10 @@ def get_role_names():
     
     return role_name_map
 
-def send_role_count():
+def send_group_counts():
+    print(db.getGroups())
+    
+def send_group_count(group):
     users = get_user_info()
     role_list = get_role_names()
     
