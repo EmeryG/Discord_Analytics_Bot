@@ -12,8 +12,6 @@ We can use database to create dashboards for server Socionics statistics
 
 NEXT STEPS:
 
-1) Create table in database for role ID groupings and labels
-2) Polish graphs
 3) Create table to keep track of current members (Member ID, member discord, member nick, relevant roles)
 4) Create table to record leavers (Member ID, member discord, member nick, relevant roles, leave date, rejoin)
 5) Create automation to track people that left the server and those that rejoin
